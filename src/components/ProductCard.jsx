@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { ShoppingCartIcon } from 'lucide-react'
+import { CartContext } from '../context/CartContext'
+
 const ProductCard = ({allProducts}) => {
 
+  const {addToCart, cart} = useContext(CartContext)
+  console.log(cart)
+  const handleAddToCart = (product) => {
+    addToCart(product)
+  }
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-6'>
       {allProducts.map(product => {
@@ -18,7 +25,9 @@ const ProductCard = ({allProducts}) => {
             </div>
             <div className='flex justify-between text-lg font-semibold mt-2 bg-[#F2F0F1] px-4 py-2'>
               <h4 className="text-blue-500">${product.price}</h4>
-              <ShoppingCartIcon className='text-blue-700'/>
+              <button onClick={() => handleAddToCart(product)}>
+                {<ShoppingCartIcon className={`${cart.find(prod => prod.id === product.id) ? 'text-yellow-500' : 'text-blue-700'}`}/>}
+              </button>
             </div>
             
           </div>
