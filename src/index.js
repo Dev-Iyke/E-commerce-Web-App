@@ -6,8 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import AppLayout from "./components/AppLayout";
 import { BrowserRouter as Router } from "react-router-dom";
 import CartProvider from "./context/CartContext";
+import Modal from "react-modal";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+Modal.setAppElement('#root')
 root.render(
   <React.StrictMode>
     <CartProvider>

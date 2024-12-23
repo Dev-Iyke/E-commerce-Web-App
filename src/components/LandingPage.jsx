@@ -43,7 +43,7 @@ const LandingPage = () => {
   return (
     <div className="">
       <Hero />
-      <div className="mt-12 p-8">
+      <div className="pt-12 p-8 dark:bg-[#333]">
         <h3
           id="products"
           className="scroll-mt-24 text-xl sm:text-2xl font-integral_bold text-center py-4"
@@ -132,7 +132,7 @@ const LandingPage = () => {
               </TabPanel>
             </Tabs>
 
-            <Button className="block mx-auto w-40 mt-4">See More</Button>
+            <Button className="block mx-auto w-40 mt-4 dark:text-black dark:bg-white dark:hover:bg-slate-200">See More</Button>
           </div>
         )}
       </div>

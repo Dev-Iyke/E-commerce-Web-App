@@ -8,7 +8,7 @@ import CartIcon from "./CartIcon";
 const NavBar = () => {
   const [productsSectionClicked, setProductsSectionClicked] = useState(false);
   return (
-    <header className="shadow-md px-4 py-6 fixed w-full scroll-mb-24 z-10 bg-[#F2F0F1]">
+    <header className="shadow-md px-4 py-6 fixed w-full scroll-mb-24 z-10 bg-[#F2F0F1] text-black">
       <div className="flex items-center justify-between w-[90%] md:w-[90%] lg:w-[85] mx-auto">
         <a href="/" className="font-integral_bold text-3xl">
           SHOP.CO

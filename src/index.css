@@ -18,6 +18,9 @@ html {
     --foreground: #ededed;
   }
 }
+body.ReactModal__Body--open {
+  overflow: hidden;
+}
 
 body {
   color: var(--foreground);

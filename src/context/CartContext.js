@@ -27,12 +27,32 @@ const CartProvider = ({ children }) => {
     setCart(updatedCart);
   };
 
+  const increaseQty = (product) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === product.id
+          ? { ...item, qty: item.qty + 1 }
+          : item
+      )
+    );
+  };
+  
+  const decreaseQty = (product) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === product.id && item.qty > 1
+          ? { ...item, qty: item.qty - 1 }
+          : item
+      )
+    );
+  };
+
   const clearCart = () => {
     setCart([]);
   };
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart }}
+      value={{ cart, addToCart, removeFromCart, clearCart, increaseQty, decreaseQty }}
     >
       {children}
     </CartContext.Provider>

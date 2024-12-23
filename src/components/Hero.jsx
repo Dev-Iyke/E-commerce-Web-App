@@ -3,7 +3,7 @@ import { Button } from "./ui/Button";
 
 const Hero = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 items-center bg-[#F2F0F1] pt-12 md:pt-28">
+    <div className="grid grid-cols-1 md:grid-cols-2 items-center bg-[#F2F0F1] pt-12 md:pt-28 text-black">
       <div className="pt-12 pb-8 md:pb-24 px-2 sm:px-6 md:px-8 lg:px-18 flex flex-col gap-8 items-center text-center md:text-start md:items-start">
         <h1 className="text-4xl font-integral_bold">
           FIND PRODUCTS THAT MATCHES YOUR STYLE
