@@ -4,9 +4,9 @@ import Footer from './Footer'
 // import '../index.css'
 const AppLayout = ({children}) => {
   return (
-    <div>
+    <div className=''>
       <NavBar />
-      <main className=''>
+      <main className='max-w-[1440px] mx-auto'>
         {children}
       </main>
       <Footer />
