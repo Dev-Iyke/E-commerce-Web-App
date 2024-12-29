@@ -1,14 +1,21 @@
 import React, { useContext } from 'react'
 import { ShoppingCartIcon } from 'lucide-react'
 import { CartContext } from '../context/CartContext'
-
+import { ToastContainer, toast } from 'react-toastify';
 const ProductCard = ({allProducts}) => {
 
-  const {addToCart, cart} = useContext(CartContext)
+  const {addToCart, cart, removeFromCart} = useContext(CartContext)
   console.log(cart)
   const handleAddToCart = (product) => {
     console.log(product)
-    addToCart(product)
+    const productExists = cart.find(prod => prod.id === product.id)
+    console.log(productExists)
+    if(productExists) {
+      removeFromCart(product.id)
+      toast.success("Product removed from cart!");
+    } else{
+      addToCart(product)
+    }
   }
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-8 gap-x-6'>

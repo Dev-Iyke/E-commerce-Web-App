@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { Trash2Icon } from "lucide-react";
 import PopUp from "./ui/Modal";
+import { Button } from "./ui/Button";
 export const CheckoutPage = () => {
-  const { cart, increaseQty, decreaseQty, removeFromCart } = useContext(CartContext);
+  const { cart, increaseQty, decreaseQty, removeFromCart, clearCart } = useContext(CartContext);
   const [subTotal, setSubTotal] = useState(0)
   const [discount, setDiscount] = useState(0)
   const [total, setTotal] = useState(0)
@@ -26,7 +27,7 @@ export const CheckoutPage = () => {
       >
         Your cart
       </h3>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+      {cart.length > 0 ? <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <div className="border-[#0000001A] mb-6 border rounded-sm p-2 flex flex-col gap-4">
           {cart.map((item) => (
             <div
@@ -36,7 +37,7 @@ export const CheckoutPage = () => {
               <div className="shadow-md h-20 w-28">
                 <img
                   src={item.image}
-                  alt="gred"
+                  alt={item.title}
                   className=" dark:p-0 w-full h-full rounded-sm p-1"
                 />
               </div>
@@ -73,6 +74,11 @@ export const CheckoutPage = () => {
               </div>
             </div>
           ))}
+          <Button
+            onClick={() => clearCart()}
+            className="block mx-auto w-40 mt-4 bg-red-700">
+            See More
+          </Button>
         </div>
         <div className="border-[#0000001A] border rounded-sm p-4 flex flex-col gap-4">
           <h3 className="text-xl font-semibold">Order Summary</h3>
@@ -99,7 +105,10 @@ export const CheckoutPage = () => {
             <PopUp totalAmount={total.toFixed(2)} />
           </div>
         </div>
-      </div>
+      </div> : 
+      <p className="text-center">
+      No products found in cart. <a href="/" className="underline">Start adding products</a>
+    </p>}
     </div>
   );
 };
