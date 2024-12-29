@@ -15,7 +15,6 @@ const ProductCard = ({allProducts}) => {
       {allProducts.map(product => {
         return (
           <div key={product.id} className=" pt-4 rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300 bg-white">
-
             <div className='px-4'>
               <a href="/products">
                 <img className="w-full h-[250px] object-contain rounded-md mb-4" src={product.image} alt={product.title}/>

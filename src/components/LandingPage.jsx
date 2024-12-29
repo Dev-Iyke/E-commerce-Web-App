@@ -4,9 +4,15 @@ import Hero from "./Hero";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { Button } from "./ui/Button";
+import Search from "./Search";
 
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
+  // const [searchedProducts, setSearchedProducts] = useState([]);
+  const [query, setQuery] = useState("");
+  const searchedProducts = products.filter((prod) => prod.title.toLowerCase().includes(query)) 
+
+
   // const [ratedProducts, setRatedProducts] = useState([])
   const [loading, setLoading] = useState(false);
   const [fetchComplete, setFetchComplete] = useState(false);
@@ -39,24 +45,43 @@ const LandingPage = () => {
   }, []);
 
   console.log(products);
+  console.log(query);
 
   return (
     <div className="">
       <Hero />
       <div className="pt-12 p-8 dark:bg-[#333]">
+        <div id="products"
+          className="scroll-mt-28">
+          <div className="flex pb-3 items-center justify-center">
+            <Search
+              onSearch={(query) => {
+                console.log(query);
+                setQuery(query.toLowerCase());
+              }}
+            />
+          </div>
+          {(query && products.length > 0) && <div className="pb-8">
+            <h3 className="mb-3 font-integral_bold text-center py-4">
+              Search Results
+            </h3>
+            <ProductCard
+              allProducts={searchedProducts}
+            />
+          </div>}
+        </div>
         <h3
-          id="products"
-          className="scroll-mt-24 text-xl sm:text-2xl font-integral_bold text-center py-4"
+          className="text-xl sm:text-2xl font-integral_bold text-center py-4"
         >
           Products Category
         </h3>
         {loading ? (
           <div className="custom-loader my-20 mx-auto"></div>
         ) : fetchComplete && products.length === 0 ? (
-          <div>
+          <p className="text-center">
             No products found. Please check your network connection and try
             again
-          </div>
+          </p>
         ) : (
           <div className="flex flex-col justify-center gap-6 py-6">
             <Tabs selectedTabClassName="border-b-2 border-blue-500">
@@ -132,7 +157,9 @@ const LandingPage = () => {
               </TabPanel>
             </Tabs>
 
-            <Button className="block mx-auto w-40 mt-4 dark:text-black dark:bg-white dark:hover:bg-slate-200">See More</Button>
+            <Button className="block mx-auto w-40 mt-4 dark:text-black dark:bg-white dark:hover:bg-slate-200">
+              See More
+            </Button>
           </div>
         )}
       </div>

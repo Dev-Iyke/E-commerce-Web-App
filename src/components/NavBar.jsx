@@ -4,13 +4,14 @@ import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { RocketIcon } from "@radix-ui/react-icons";
 import CartIcon from "./CartIcon";
+import Search from "./Search";
 
 const NavBar = () => {
   const [productsSectionClicked, setProductsSectionClicked] = useState(false);
   return (
-    <header className="shadow-md px-4 py-6 fixed w-full scroll-mb-24 z-10 bg-[#F2F0F1] text-black">
-      <div className="flex items-center justify-between w-[90%] md:w-[90%] lg:w-[85%] mx-auto">
-        <a href="/" className="font-integral_bold text-3xl">
+    <header className="shadow-md pr-6 py-6 fixed w-full scroll-mb-24 z-10 bg-[#F2F0F1] text-black">
+      <div className="flex items-center justify-between w-[95%] md:w-[90%] lg:w-[85%] mx-auto">
+        <a href="/" className="font-integral_bold text-3xl pr-4">
           SHOP.CO
         </a>
         <nav className="hidden md:flex items-center gap-6">
@@ -46,13 +47,16 @@ const NavBar = () => {
             Checkout
           </NavLink>
         </nav>
-        <div className="md:flex hidden w-[30%] lg:w-full max-w-sm items-center space-x-2 ">
-          <Input type="text" placeholder="Search for products" />
-          <Button type="submit">
+        <a
+          href="/#products"
+          onClick={() => setProductsSectionClicked(true)}
+        >
+          <Button 
+            className='sm:w-full' size='sm'>
             {" "}
-            Search <RocketIcon />
+            Search
           </Button>
-        </div>
+        </a>
         <NavLink to="/checkout">
           <CartIcon />
         </NavLink>
