@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
-import { RocketIcon } from "@radix-ui/react-icons";
 import CartIcon from "./CartIcon";
-import Search from "./Search";
 
 const NavBar = () => {
   const [productsSectionClicked, setProductsSectionClicked] = useState(false);

@@ -1,9 +1,7 @@
 import React from 'react'
 import NavBar from './NavBar'
 import Footer from './Footer'
-import Search from './Search'
-import { ToastContainer, toast } from 'react-toastify';
-// import '../index.css'
+import { ToastContainer } from 'react-toastify';
 const AppLayout = ({children}) => {
   return (
     <div className=''>
