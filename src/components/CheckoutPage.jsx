@@ -77,7 +77,7 @@ export const CheckoutPage = () => {
           <Button
             onClick={() => clearCart()}
             className="block mx-auto w-40 mt-4 bg-red-700">
-            See More
+            Clear Cart
           </Button>
         </div>
         <div className="border-[#0000001A] border rounded-sm p-4 flex flex-col gap-4">
