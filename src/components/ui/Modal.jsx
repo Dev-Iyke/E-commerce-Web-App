@@ -2,7 +2,8 @@ import React from "react";
 import Modal from "react-modal";
 import { Button } from "./Button";
 import { ArrowRight } from "lucide-react";
-import Receipt from "../Receipt";
+import Receipt from "../product/Receipt";
+import Loader from "../Loader";
 
 const customStyles = {
   content: {
@@ -24,7 +25,7 @@ const customStyles = {
   },
 };
 
-export default function PopUp({totalAmount}) {
+export default function PopUp({ totalAmount }) {
   const orderId = Date.now();
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [showPaymentStatus, setShowPaymentStatus] = React.useState(false);
@@ -56,7 +57,7 @@ export default function PopUp({totalAmount}) {
         onClick={openModal}
         className="w-full flex py-2 justify-center items-center gap-1 mt-4 text-lg font-semibold text-white bg-[#0070F3] hover:bg-[#0062CC] rounded-md"
       >
-        <span>Checkout</span> 
+        <span>Checkout</span>
         <ArrowRight />
       </button>
       <Modal
@@ -83,10 +84,11 @@ export default function PopUp({totalAmount}) {
             <p className="text-xl text-white my-6">
               Account Number: 9159106582 <br />
               Account Name: Ikechukwu Thompson <br />
-              Bank Name: PalmPay Ltd 
+              Bank Name: PalmPay Ltd
             </p>
             <p>
-              Total Amount: <span className="text-yellow-500">${totalAmount}</span> <br />
+              Total Amount:{" "}
+              <span className="text-yellow-500">${totalAmount}</span> <br />
               OrderID: <span>{orderId}</span> <br />
               <span className="text-yellow-500">
                 Thanks for the Support 😁🙌🏽
@@ -105,7 +107,7 @@ export default function PopUp({totalAmount}) {
           </button>
         </div>
 
-        {loading && <div className="custom-loader my-20 mx-auto"></div>}
+        {loading && <Loader />}
 
         {showPaymentStatus && (
           <div className="text-center mt-4 text-xl text-white">

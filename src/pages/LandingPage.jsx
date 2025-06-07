@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import Hero from "./Hero";
+import ProductCard from "../components/product/ProductCard";
+import Hero from "../components/home/Hero";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { Button } from "./ui/Button";
-import Search from "./Search";
+import { Button } from "../components/ui/Button";
+import Search from "../components/home/Search";
 
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
   // const [searchedProducts, setSearchedProducts] = useState([]);
   const [query, setQuery] = useState("");
-  const searchedProducts = products.filter((prod) => prod.title.toLowerCase().includes(query)) 
-
+  const searchedProducts = products.filter((prod) =>
+    prod.title.toLowerCase().includes(query)
+  );
 
   // const [ratedProducts, setRatedProducts] = useState([])
   const [loading, setLoading] = useState(false);
@@ -51,8 +52,7 @@ const LandingPage = () => {
     <div className="">
       <Hero />
       <div className="pt-12 p-8 dark:bg-[#333]">
-        <div id="products"
-          className="scroll-mt-28">
+        <div id="products" className="scroll-mt-28">
           <div className="flex pb-3 items-center justify-center">
             <Search
               onSearch={(query) => {
@@ -61,18 +61,16 @@ const LandingPage = () => {
               }}
             />
           </div>
-          {(query && products.length > 0) && <div className="pb-8">
-            <h3 className="mb-3 font-integral_bold text-center py-4">
-              Search Results
-            </h3>
-            <ProductCard
-              allProducts={searchedProducts}
-            />
-          </div>}
+          {query && products.length > 0 && (
+            <div className="pb-8">
+              <h3 className="mb-3 font-integral_bold text-center py-4">
+                Search Results
+              </h3>
+              <ProductCard allProducts={searchedProducts} />
+            </div>
+          )}
         </div>
-        <h3
-          className="text-xl sm:text-2xl font-integral_bold text-center py-4"
-        >
+        <h3 className="text-xl sm:text-2xl font-integral_bold text-center py-4">
           Products Category
         </h3>
         {loading ? (
