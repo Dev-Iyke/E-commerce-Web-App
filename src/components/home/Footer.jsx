@@ -1,5 +1,5 @@
 import React from "react";
-import "../footer.css";
+import "../../footer.css";
 const Footer = () => {
   return (
     <footer>
@@ -7,7 +7,7 @@ const Footer = () => {
         <div class="top">
           <div class="logo-details">
             <span class="logo_name" className="font-integral_bold">
-              SHOP.CO
+              FRESH MART
             </span>
           </div>
           <div class="media-icons">
@@ -103,7 +103,7 @@ const Footer = () => {
       <div class="bottom-details">
         <div class="bottom_text">
           <span class="copyright_text">
-            Copyright Obasi Ikechukwu © 2024 <a href="/">SHOP.CO </a>All rights
+            Copyright Obasi Ikechukwu © 2024 <a href="/">FRESH MART </a>All rights
             reserved
           </span>
           <span class="policy_terms">
